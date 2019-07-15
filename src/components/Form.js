@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
 export const Form = (props) => {
-    const [member, setMember] = useState({name: '', email: '', role: ''})
+    const [member, setMember] = useState({name: '', email: '', role: '', key: 0})
 
     const handleChange = event => {
-        setMember({...member, [event.target.name]: event.target.value})
+        setMember({...member, [event.target.name]: event.target.value, key: Math.random()})
     }
 
     const submitHandler = (event, member) => {
@@ -14,6 +14,10 @@ export const Form = (props) => {
         console.log(member.role)
         props.updateMembers(member)
     }
+
+    useEffect(
+        console.log(props.memberToEdit)
+    , [props.memberToEdit])
 
     return(
         <form onSubmit={event => submitHandler(event, member)}>

@@ -5,15 +5,22 @@ import { Member } from './components/Member'
 
 function App() {
   const [members, setMembers] = useState([])
+  const [memberToEdit, setMemberToEdit] = useState({name: '', email: '', role: ''})
 
   const updateMembers = (member) => {
     setMembers([...members, member]);
   };
 
+  const whatEdit = (event, member) => {
+    event.preventDefault()
+    setMemberToEdit({member})
+    console.log(memberToEdit)
+  }
+
   return (
     <div className="App">
-      <Form updateMembers={updateMembers} />
-      {members.map(member => {return <Member member={member} />})}
+      <Form updateMembers={updateMembers} memberToEdit={memberToEdit} />
+      {members.map(member => {return <div><Member member={member} editMode={memberToEdit} /><button onClick={event => whatEdit(event, member)}>Edit!</button></div>})}
     </div>
   );
 }
