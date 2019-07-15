@@ -5,7 +5,7 @@ import { Member } from './components/Member'
 
 function App() {
   const [members, setMembers] = useState([])
-  const [memberToEdit, setMemberToEdit] = useState({name: '', email: '', role: ''})
+  const [memberToEdit, setMemberToEdit] = useState()
 
   const updateMembers = (member) => {
     setMembers([...members, member]);
