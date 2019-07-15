@@ -15,8 +15,10 @@ export const Form = (props) => {
         props.updateMembers(member)
     }
 
-    useEffect(
+    useEffect(() => {
         console.log(props.memberToEdit)
+        setMember(props.memberToEdit.member)
+    }
     , [props.memberToEdit])
 
     return(
